@@ -20,6 +20,9 @@ const val TODO_HELP = """
     |   help
     |       list all the available commands
     |       Example: help
+    |   sort
+    |       sorts completed and uncompleted tasks
+    |       Example: sort
     |   exit
     |       close the application
     |       Example: exit
@@ -70,6 +73,9 @@ class Helper {
             }
             "help" -> {
                 fileHandler.help()
+            }
+            "sort" -> {
+                fileHandler.sort()
             }
             else -> {
                 println("Error : \'$command\' is not a todo command. See \'help\'.")

@@ -46,6 +46,18 @@ class FileHandler {
             index++
         }
     }
+    private fun sortList(){
+       var notCompletedIndex = 0
+       for (index in 0.. taskList.lastIndex){
+           val todoItem = taskList[index]
+            if(!todoItem.isCompleted){
+                taskList.add(notCompletedIndex,todoItem)
+                removeTask(index + 1)
+                notCompletedIndex++
+            }
+        }
+        rewriteFileFromList()
+    }
 
     private fun markAsComplete(index: Int) {
         taskList[index] = taskList[index].copy(isCompleted = true)
@@ -111,6 +123,10 @@ class FileHandler {
 
     fun list() {
         showItem()
+    }
+
+    fun sort() {
+        sortList()
     }
 
     fun help() {
